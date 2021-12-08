@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load i18n wagtailcore_tags comments comments_xtd wagtailimages_tags widget_tweaks static %}
+{% load i18n wagtailcore_tags comments comments_xtd wagtailimages_tags wagtailembeds_tags widget_tweaks static %}
 
 {% block body_class %}template-articlepage{% endblock %}
 
@@ -66,6 +66,32 @@
             </div>
         </div>
     {% endif %}
+    
+    
+    {% if page.body %}
+        <div class="container-fluid mt-4">
+            <div class="row">
+                <div class="col-auto mb-3">
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% for block in page.body %}
+    {% if block.block_type == 'video' %}
+        
+        <div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="{{ self.video.url }}?rel=0" allowfullscreen></iframe>
+</div>
+        
+    {% else %}
+        <div class="block-{{ block.block_type }}">
+            {% include_block block %}
+        </div>
+    {% endif %}
+{% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    
 
     <div class="container-fluid">
         <div class="row">

@@ -120,6 +120,12 @@ WSGI_APPLICATION = 'pet.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -299,3 +305,7 @@ WAGTAILSTREAMFORMS_ADVANCED_SETTINGS_MODEL = 'cms.AdvancedFormSetting'
 # dbbackup settings
 DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
 DBBACKUP_STORAGE_OPTIONS = {'location': os.path.join(BASE_DIR, '../backups')}
+
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

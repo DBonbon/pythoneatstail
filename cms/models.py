@@ -141,7 +141,7 @@ class ThemeIndexPage(TranslatablePage):
     intro = RichTextField(blank=True)
 
     # Specifies that only ThemePage objects can live under this index page
-    subpage_types = ['ThemePage']
+    #subpage_types = ['ThemePage']
 
     content_panels = TranslatablePage.content_panels + [
         FieldPanel('intro', classname='full'),
@@ -152,7 +152,7 @@ class ArticleIndexPage(TranslatablePage):
     intro = RichTextField(blank=True)
 
     # Specifies that only ArticlePage objects can live under this index page
-    subpage_types = ['ArticlePage']
+    #subpage_types = ['ArticlePage']
 
     # A method to access and reorder the children of the page (i.e. ArticlePage objects)
     def articlepages(self):
